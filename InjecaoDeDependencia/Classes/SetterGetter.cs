@@ -6,35 +6,30 @@ using System.Threading.Tasks;
 
 namespace InjecaoDeDependencia.Classes
 {
-    public interface IDbconectConstruc
+    public interface IDbconectSeG
     {
         dynamic GetData();
     }
 
-    public class XDatabase : IDbconectConstruc
+    public class ODatabase : IDbconectSeG
     {
         public dynamic GetData()
         {
-            return new { name = "XDatabase" };
+            return new { name = "ODatabase" };
         }
     }
 
-    public class YDatabase : IDbconectConstruc
+    public class VDatabase : IDbconectSeG
     {
         public dynamic GetData()
         {
-            return new { name = "YDatabase" };
+            return new { name = "VDatabase" };
         }
     }
 
-    public class DbOperationCon
+    public class DbOperationSeG
     {
-        private IDbconectConstruc _dbconect;
-
-        public DbOperationCon (IDbconectConstruc dbconect)
-        {
-            _dbconect = dbconect;
-        }
+        public IDbconectSeG _dbconect { set; get; }
 
         public dynamic GetData()
         {
@@ -43,6 +38,10 @@ namespace InjecaoDeDependencia.Classes
     }
 }
 /*
-DbOperationCon db = new DbOperationCon(new YDatabase());
+DbOperationSeG db = new DbOperationSeG()
+{
+    _dbconect = new VDatabase()
+};
+
 Console.WriteLine(db.GetData().name); 
 */

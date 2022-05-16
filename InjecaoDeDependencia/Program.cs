@@ -22,6 +22,3 @@ using InjecaoDeDependencia.Classes;
  * 
 */
 
-DbOperation db = new DbOperation(new YDatabase());
-
-Console.WriteLine(db.GetData().name);
